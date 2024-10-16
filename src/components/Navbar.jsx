@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import myPhoto from "../assets/myPhoto.jpg";
+import dp from "../assets/dp.jpeg";
 import { LiaSkullCrossbonesSolid } from "react-icons/lia";
 import { PiHamburgerLight } from "react-icons/pi";
 import { Link } from "@tanstack/react-router";
@@ -61,7 +61,7 @@ const Navbar = () => {
             rel="noopener noreferrer"
           >
             <img
-              src={myPhoto}
+              src={dp}
               alt="User"
               className="w-full h-full object-cover cursor-pointer"
             />
@@ -102,7 +102,7 @@ const Navbar = () => {
                 rel="noopener noreferrer"
               >
                 <img
-                  src={myPhoto}
+                  src={dp}
                   alt="User"
                   className="w-full h-full object-cover cursor-pointer"
                 />

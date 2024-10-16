@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react";
 import * as d3 from "d3";
-import "./style.css";
 
 const GameOfThronesRelations = () => {
   const svgRef = useRef(null);
@@ -213,6 +212,9 @@ const GameOfThronesRelations = () => {
         .enter()
         .append("path")
         .attr("class", (d) => `link ${d.type}`)
+        .attr("stroke", "#999")
+        .attr("stroke-opacity", "0.6")
+        .attr("fill", "none")
         .attr("stroke-width", 0)
         .attr("id", (d) => d.id)
         .attr("marker-end", "url(#arrowhead)");
@@ -259,15 +261,16 @@ const GameOfThronesRelations = () => {
             ? `url(#${d.id.toLowerCase().replace(/([^A-Z0-9])/gi, "")})`
             : color(d.group)
         )
-        .attr("stroke", "green")
-        .attr("stroke-width", "1");
+        .attr("stroke", "white")
+        .attr("stroke-width", "1.5");
 
       node
         .append("text")
         .attr("dy", 1.45 * radius)
         .attr("text-anchor", "middle")
         .text((d) => d.id)
-        .style("font-size", "10px");
+        .attr("font-size", "10px")
+        .attr("font-family", "sans-serif");
 
       // Apply the styles of the arrays
       [...config.directed, ...config.undirected].forEach((val) => {
@@ -353,8 +356,8 @@ const GameOfThronesRelations = () => {
   }, []);
 
   return (
-    <div>
-      <svg ref={svgRef}></svg>
+    <div className="w-full h-full bg-white">
+      <svg ref={svgRef} className="w-full h-full"></svg>
     </div>
   );
 };
