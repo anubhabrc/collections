@@ -2,8 +2,7 @@ import React, { useState, useRef } from "react";
 import { Button } from "@cred/neopop-web/lib/components";
 import { Canvas, useThree } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-// import Human from "../../../public/Human.jsx";
-// import Human from "../../assets/model/Human";
+import Human from "../../../public/Human";
 
 const StacksOfCash = () => {
   const [moneyStacks, setMoneyStacks] = useState([]);
@@ -66,7 +65,7 @@ const StacksOfCash = () => {
         <pointLight position={[10, 10, 10]} intensity={0.8} />
         <Platform />
         {moneyStacks && <MoneyStack value={moneyStacks.value} />}
-        {/* <Human position={[-5, 0, 3]} /> */}
+        <Human position={[-5, 0, 3]} />
         <OrbitControls target={[0, 1, 0]} />
       </>
     );
