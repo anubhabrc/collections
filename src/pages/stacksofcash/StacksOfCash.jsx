@@ -84,9 +84,10 @@ const StacksOfCash = () => {
               notes are used for reference).
             </p>
           </div>
-          <div className="flex flex-col gap-2 ">
+          <div className="flex flex-col gap-2 w-[65%]">
             {presetValues.map((preset, idx) => (
-              <Button
+              <button
+                className="py-2 font-serif text-white bg-gray-600 border-b-8 border-gray-700 border-r-[6px] border-r-gray-500 active:border-b-2 active:border-r-2 active:translate-y-[6px] active:translate-x-[6px] transition-all duration-100"
                 key={idx}
                 variant="primary"
                 kind="elevated"
@@ -96,7 +97,7 @@ const StacksOfCash = () => {
                 // onClick={setMoneyStacks(preset.value)}
               >
                 {preset.label}
-              </Button>
+              </button>
             ))}
           </div>
         </div>
