@@ -1,5 +1,4 @@
 import React, { useState, useRef } from "react";
-import { Button } from "@cred/neopop-web/lib/components";
 import { Canvas, useThree } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import Human from "../../../public/Human";
@@ -23,7 +22,6 @@ const StacksOfCash = () => {
 
   const MoneyStack = ({ value }) => {
     const side = (16.6 * 6.6 * ((value / 2000) * 0.011)) ** (1 / 3) / 100;
-    // if (isNaN(side)) return null;
     console.log(side);
 
     const meshRef = useRef();
@@ -87,7 +85,7 @@ const StacksOfCash = () => {
           <div className="flex flex-col gap-2 w-[65%]">
             {presetValues.map((preset, idx) => (
               <button
-                className="py-2 font-serif text-white bg-gray-600 border-b-8 border-gray-700 border-r-[6px] border-r-gray-500 active:border-b-2 active:border-r-2 active:translate-y-[6px] active:translate-x-[6px] transition-all duration-100"
+                className="py-2 font-serif text-white bg-gray-600 border-b-8 border-gray-700 border-r-[6px] border-r-gray-500 active:border-b-2 active:border-r-2 active:translate-y-[6px] active:translate-x-[6px] transition-all"
                 key={idx}
                 variant="primary"
                 kind="elevated"

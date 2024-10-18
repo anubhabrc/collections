@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import dp from "../assets/dp.jpeg";
 import { LiaSkullCrossbonesSolid } from "react-icons/lia";
 import { PiHamburgerLight } from "react-icons/pi";
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const routerState = useRouterState();
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
@@ -13,6 +14,18 @@ const Navbar = () => {
 
   const closeSidebar = () => {
     setIsOpen(false);
+  };
+
+  const isLinkActive = (path) => {
+    return routerState.location.pathname === path;
+  };
+
+  // Helper function to get link class names
+  const getLinkClasses = (path) => {
+    const isActive = isLinkActive(path);
+    return `text-sm font-serif ${
+      isActive ? "text-black font-medium" : "text-gray-500 hover:text-black"
+    }`;
   };
 
   return (
@@ -24,21 +37,19 @@ const Navbar = () => {
             Collections ✨
           </Link>
           <div className="hidden md:flex space-x-10">
-            <Link
-              to="/"
-              className="text-gray-500 text-sm hover:text-black font-serif"
-            >
+            <Link to="/" className={getLinkClasses("/")}>
               Are you middle class?
             </Link>
             <Link
               to="/game-of-thrones"
-              className="text-gray-500 text-sm hover:text-black font-serif"
+              className={getLinkClasses("/game-of-thrones")}
             >
               Game of Thrones
             </Link>
             <Link
               to="/stacks-of-cash"
-              className="text-gray-500 text-sm hover:text-black font-serif"
+              // className="text-gray-500 text-sm hover:text-black font-serif"
+              className={getLinkClasses("/stacks-of-cash")}
             >
               Stacks of Cash
             </Link>
@@ -100,6 +111,7 @@ const Navbar = () => {
                 href="https://www.anubhabrc.tech/"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={closeSidebar}
               >
                 <img
                   src={dp}
@@ -111,18 +123,20 @@ const Navbar = () => {
           </div>
           <div className="flex flex-col gap-2 space-y-4">
             <h3 className="text-black font-serif font-semibold">Quick links</h3>
-            <Link to="/" className="text-gray-500 text-sm font-serif">
+            <Link to="/" className={getLinkClasses("/")} onClick={closeSidebar}>
               Are you middle class?
             </Link>
             <Link
               to="/game-of-thrones"
-              className="text-gray-500 text-sm font-serif"
+              className={getLinkClasses("/game-of-thrones")}
+              onClick={closeSidebar}
             >
               Game of Thrones
             </Link>
             <Link
               to="/stacks-of-cash"
-              className="text-gray-500 text-sm font-serif"
+              className={getLinkClasses("/stacks-of-cash")}
+              onClick={closeSidebar}
             >
               Stacks of Cash
             </Link>
@@ -131,6 +145,7 @@ const Navbar = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-500 text-sm font-serif"
+              onClick={closeSidebar}
             >
               Portfolio
             </a>
