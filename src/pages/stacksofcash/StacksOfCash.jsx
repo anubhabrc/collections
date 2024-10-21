@@ -71,8 +71,16 @@ const StacksOfCash = () => {
 
   return (
     <div className="w-full">
-      <div className="w-full flex p-10 gap-2 h-screen">
-        <div className="flex flex-col gap-7 w-1/5 p-5 rounded-lg shadow-sm border border-gray-300">
+      <div className="w-full flex flex-col md:flex-row p-4 md:p-10 gap-4 md:gap-2 min-h-screen">
+        {/* Visualization area - full width on mobile, 4/5 width on larger screens */}
+        <div className="w-full md:w-4/5 h-[60vh] md:h-auto bg-white rounded-lg shadow-sm border border-gray-300 p-5 order-1 md:order-2">
+          <Canvas>
+            <Scene />
+          </Canvas>
+        </div>
+
+        {/* Control panel - full width on mobile, 1/5 width on larger screens */}
+        <div className="w-full md:w-1/5 p-5 rounded-lg shadow-sm border border-gray-300 order-2 md:order-1">
           <div>
             <p className="font-serif font-semibold text-2xl text-black">
               Stacks of cash
@@ -82,27 +90,17 @@ const StacksOfCash = () => {
               notes are used for reference).
             </p>
           </div>
-          <div className="flex flex-col gap-2 w-[65%]">
+          <div className="flex flex-col gap-2 mt-7 w-[65%]">
             {presetValues.map((preset, idx) => (
               <button
-                className="py-2 font-serif text-white bg-gray-600 border-b-8 border-gray-700 border-r-[6px] border-r-gray-500 active:border-b-2 active:border-r-2 active:translate-y-[6px] active:translate-x-[6px] transition-all"
+                className="flex-1 md:flex-none py-2 font-serif text-white bg-gray-600 border-b-8 border-gray-700 border-r-[6px] border-r-gray-500 active:border-b-2 active:border-r-2 active:translate-y-[6px] active:translate-x-[6px] transition-all"
                 key={idx}
-                variant="primary"
-                kind="elevated"
-                size="big"
-                colorMode="dark"
                 onClick={() => replaceStack(preset.value)}
-                // onClick={setMoneyStacks(preset.value)}
               >
                 {preset.label}
               </button>
             ))}
           </div>
-        </div>
-        <div className="w-4/5 bg-white rounded-lg shadow-sm border border-gray-300 p-5">
-          <Canvas>
-            <Scene />
-          </Canvas>
         </div>
       </div>
     </div>

@@ -51,7 +51,7 @@ const IncomeCard = () => {
                   href="https://wid.world/www-site/uploads/2024/03/WorldInequalityLab_WP2024_09_Income-and-Wealth-Inequality-in-India-1922-2023_Final.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-700 text-base"
+                  className="text-blue-700 text-sm"
                 >
                   (source)
                 </a>
