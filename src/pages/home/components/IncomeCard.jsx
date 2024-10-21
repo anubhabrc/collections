@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { MdCurrencyRupee } from "react-icons/md";
 import { LiaArrowRightSolid } from "react-icons/lia";
-import IncomePercentileCalculator from "./IncomePercentileCalculator";
+import IncomePercentileCalculator2 from "./IncomePercentileCalculator2";
 
 const IncomeCard = () => {
   const [income, setIncome] = useState(""); // For formatted income
@@ -45,7 +45,18 @@ const IncomeCard = () => {
             <h1 className="text-4xl font-bold">Compare your income.</h1>
             <p className="text-lg font-light">
               Find out where you stand on a percentile basis in India, based on
-              your yearly income.
+              your yearly income
+              <span>
+                <a
+                  href="https://wid.world/www-site/uploads/2024/03/WorldInequalityLab_WP2024_09_Income-and-Wealth-Inequality-in-India-1922-2023_Final.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-700 text-base"
+                >
+                  (source)
+                </a>
+              </span>
+              .
             </p>
           </div>
         </div>
@@ -70,7 +81,7 @@ const IncomeCard = () => {
         {/* Calculator Results */}
         <div className="mt-6">
           {submittedIncome && (
-            <IncomePercentileCalculator income={submittedIncome} />
+            <IncomePercentileCalculator2 income={submittedIncome} />
           )}
         </div>
       </div>
