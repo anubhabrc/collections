@@ -41,12 +41,6 @@ const Navbar = () => {
               Are you middle class?
             </Link>
             <Link
-              to="/game-of-thrones"
-              className={getLinkClasses("/game-of-thrones")}
-            >
-              Game of Thrones
-            </Link>
-            <Link
               to="/stacks-of-cash"
               // className="text-gray-500 text-sm hover:text-black font-serif"
               className={getLinkClasses("/stacks-of-cash")}
@@ -125,13 +119,6 @@ const Navbar = () => {
             <h3 className="text-black font-serif font-semibold">Quick links</h3>
             <Link to="/" className={getLinkClasses("/")} onClick={closeSidebar}>
               Are you middle class?
-            </Link>
-            <Link
-              to="/game-of-thrones"
-              className={getLinkClasses("/game-of-thrones")}
-              onClick={closeSidebar}
-            >
-              Game of Thrones
             </Link>
             <Link
               to="/stacks-of-cash"
