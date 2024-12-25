@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { Canvas, useThree } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import Human from "../../../public/Human";
+// import Human from "../../../public/Human";
 
 const StacksOfCash = () => {
   const [moneyStacks, setMoneyStacks] = useState([]);

@@ -86,11 +86,34 @@ const IncomePercentileCalculator = ({ income }) => {
       timesNationalAverage: timesNationalAverage,
     };
   };
+  // const calculateResults = async (income) => {
+  //   const response = await fetch("http://localhost:5000/calculate", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({ income: parseIndianNumber(income) }),
+  //   });
+  //   const { percentile } = await response.json();
+
+  //   const peopleAbove = Math.round(totalPopulation * (percentile / 100));
+  //   const timesNationalAverage = (
+  //     parseIndianNumber(income) / nationalAverage
+  //   ).toFixed(2);
+
+  //   return {
+  //     percentile: percentile.toFixed(3),
+  //     peopleAbove: formatIndianNumber(peopleAbove),
+  //     timesNationalAverage: timesNationalAverage,
+  //   };
+  // };
 
   React.useEffect(() => {
     if (income) {
-      const result = calculateResults(income);
-      setResult(result);
+      (async () => {
+        const result = await calculateResults(income);
+        setResult(result);
+      })();
     }
   }, [income]);
 
@@ -99,7 +122,7 @@ const IncomePercentileCalculator = ({ income }) => {
       {result && (
         <div className="flex flex-col gap-20 md:gap-10">
           <div className="md:w-[75%]">
-            <p className="text-xl font-medium text-gray-400">
+            <p className="text-2xl font-medium text-gray-400">
               You rank among the top{" "}
               <strong className="text-black">{result.percentile}%</strong> of
               income earners across India. Out of over a billion people,

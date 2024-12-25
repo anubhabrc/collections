@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { MdCurrencyRupee } from "react-icons/md";
 import { LiaArrowRightSolid } from "react-icons/lia";
 import IncomePercentileCalculator2 from "./IncomePercentileCalculator2";
+import StacksOfCash2 from "./StacksOfCash2";
 
 const IncomeCard = () => {
   const [income, setIncome] = useState(""); // For formatted income
@@ -48,7 +49,7 @@ const IncomeCard = () => {
               your yearly income
               <span>
                 <a
-                  href="https://wid.world/www-site/uploads/2024/03/WorldInequalityLab_WP2024_09_Income-and-Wealth-Inequality-in-India-1922-2023_Final.pdf"
+                  href="https://wid.world/www-site/uploads/2024/03/WorldInequalityLab_WP2024_09_Income-and-Wealth-Inequality-in-India-1922-2023_Final.pdf#page=41"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-700 text-sm"
@@ -81,7 +82,10 @@ const IncomeCard = () => {
         {/* Calculator Results */}
         <div className="mt-6">
           {submittedIncome && (
-            <IncomePercentileCalculator2 income={submittedIncome} />
+            <div>
+              <IncomePercentileCalculator2 income={submittedIncome} />
+              <StacksOfCash2 incomeValue={submittedIncome} />
+            </div>
           )}
         </div>
       </div>
