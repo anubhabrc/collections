@@ -121,8 +121,8 @@ const IncomePercentileCalculator = ({ income }) => {
     <div>
       {result && (
         <div className="flex flex-col gap-20 md:gap-10">
-          <div className="md:w-[75%]">
-            <p className="text-2xl font-medium text-gray-400">
+          <div className="md:w-[75%] p-5 rounded-lg shadow-sm border border-gray-300">
+            <p className="text-xl text-gray-400 font-serif font-semibold">
               You rank among the top{" "}
               <strong className="text-black">{result.percentile}%</strong> of
               income earners across India. Out of over a billion people,

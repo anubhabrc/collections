@@ -2,19 +2,17 @@ import React, { useState, useRef, useEffect } from "react";
 import { Canvas, useThree, useFrame } from "@react-three/fiber";
 import { OrbitControls, Grid } from "@react-three/drei";
 import Human from "../../../../public/Human";
-// import Cash from "../../../../public/Cash";
 import * as THREE from "three";
 
 const StacksOfCash = ({ incomeValue }) => {
   const [moneyStacks, setMoneyStacks] = useState([]);
 
   useEffect(() => {
-    setMoneyStacks({ label: "", value: incomeValue });
+    setMoneyStacks({ value: incomeValue });
   }, [incomeValue]);
 
   const MoneyStack = ({ value }) => {
     const side = (16.6 * 6.6 * ((value / 2000) * 0.011)) ** (1 / 3) / 100;
-
     const meshRef = useRef();
 
     return (
@@ -32,14 +30,6 @@ const StacksOfCash = ({ incomeValue }) => {
     );
   };
 
-  //   const Platform = () => {
-  //     return (
-  //       <mesh>
-  //         <gridHelper args={[15, 15, "#000000", "#000000"]} />
-  //       </mesh>
-  //     );
-  //   };
-
   const Platform = () => {
     const { camera } = useThree();
     const gridRef = useRef();
@@ -47,12 +37,8 @@ const StacksOfCash = ({ incomeValue }) => {
 
     useFrame(() => {
       if (!gridRef.current) return;
-
-      // Use a larger chunk size (50 units) and lower precision
       const snappedX = Math.round(camera.position.x / 50) * 50;
       const snappedZ = Math.round(camera.position.z / 50) * 50;
-
-      // Only update position if camera has moved significantly
       if (
         Math.abs(lastPosition.current.x - snappedX) > 25 ||
         Math.abs(lastPosition.current.z - snappedZ) > 25
@@ -71,7 +57,7 @@ const StacksOfCash = ({ incomeValue }) => {
         cellThickness={0.6}
         cellColor="#6f6f6f"
         sectionSize={10}
-        sectionThickness={1.2}
+        sectionThickness={0.6}
         sectionColor="#000000"
         fadeStrength={5}
         fadeDistance={50}
@@ -87,13 +73,8 @@ const StacksOfCash = ({ incomeValue }) => {
       camera.position.set(0, 5, 10);
     }, [camera]);
 
-    // Calculate stack size
-    const side =
-      (16.6 * 6.6 * ((moneyStacks.value / 2000) * 0.011)) ** (1 / 3) / 100;
-    // Fixed distance for human positioning (about 2 meters from the edge of the stack)
-    const FIXED_DISTANCE = 2;
-    // Calculate offset to position human from the center
-    const offsetDistance = side / 2 + FIXED_DISTANCE;
+    const side = (16.6 * 6.6 * ((incomeValue / 2000) * 0.011)) ** (1 / 3) / 100;
+    const offsetDistance = side / 2 + 2;
 
     return (
       <>
@@ -103,7 +84,6 @@ const StacksOfCash = ({ incomeValue }) => {
         <Platform />
         {moneyStacks && <MoneyStack value={moneyStacks.value} />}
         <Human position={[-offsetDistance, 0, -offsetDistance]} />
-        {/* <Cash position={[-4, 0, 2]} /> */}
         <OrbitControls target={[0, 1, 0]} maxPolarAngle={Math.PI / 2.1} />
       </>
     );
@@ -116,6 +96,25 @@ const StacksOfCash = ({ incomeValue }) => {
           <Canvas>
             <Scene />
           </Canvas>
+        </div>
+        <div className="w-full md:w-1/5 p-5 rounded-lg shadow-sm border border-gray-300 flex flex-col gap-5">
+          <p className="font-serif font-semibold text-xl text-black">
+            Visualize Money
+          </p>
+          <p className="font-serif text-gray-500">
+            Here you can visualize how certain amounts of money would look Like
+            when stacked beside you.
+          </p>
+          <p className="font-serif text-gray-500">
+            ₹2000 notes are used as the only point of reference.
+          </p>
+          <p className="font-serif text-gray-500">
+            Real world measurements are replicated here, where 1 unit in this 3D
+            scene is 1 metre. The human is 1.8m tall.
+          </p>
+          <p className="font-serif text-gray-500">
+            Volumetric calculations are used to render the stacks of cash.
+          </p>
         </div>
       </div>
     </div>

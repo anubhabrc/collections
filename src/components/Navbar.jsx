@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <div className="fixed top-0 left-0 w-full border-b z-50 bg-white">
       <div className="w-[95%] mx-auto py-2 flex items-center md:justify-between">
-        <div className="flex gap-10 items-center">
+        <div className="flex gap-3 items-center">
           <Link to="/" className="text-xl font-bold text-black font-serif">
             Are you middle class? 💵
           </Link>
