@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import IncomePercentileGraphSvg from "./IncomePercentileGraphSvg";
+import CurrencyConverter from "./CurrencyConverter";
 
 const incomeData = [
   { threshold: 0, percentile: 100 },
@@ -71,7 +72,7 @@ const calculatePercentileLogarithmic = (income) => {
   return 100; // Default case
 };
 
-const IncomePercentileCalculator = ({ income }) => {
+const PercentileCalculator = ({ income }) => {
   const [result, setResult] = useState(null);
 
   const calculateResults = (income) => {
@@ -86,27 +87,6 @@ const IncomePercentileCalculator = ({ income }) => {
       timesNationalAverage: timesNationalAverage,
     };
   };
-  // const calculateResults = async (income) => {
-  //   const response = await fetch("http://localhost:5000/calculate", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({ income: parseIndianNumber(income) }),
-  //   });
-  //   const { percentile } = await response.json();
-
-  //   const peopleAbove = Math.round(totalPopulation * (percentile / 100));
-  //   const timesNationalAverage = (
-  //     parseIndianNumber(income) / nationalAverage
-  //   ).toFixed(2);
-
-  //   return {
-  //     percentile: percentile.toFixed(3),
-  //     peopleAbove: formatIndianNumber(peopleAbove),
-  //     timesNationalAverage: timesNationalAverage,
-  //   };
-  // };
 
   React.useEffect(() => {
     if (income) {
@@ -121,20 +101,27 @@ const IncomePercentileCalculator = ({ income }) => {
     <div>
       {result && (
         <div className="flex flex-col gap-20 md:gap-10">
-          <div className="md:w-[75%] p-5 rounded-lg shadow-sm border border-gray-300">
-            <p className="text-xl text-gray-400 font-serif font-semibold">
-              You rank among the top{" "}
-              <strong className="text-black">{result.percentile}%</strong> of
-              income earners across India. Out of over a billion people,
-              approximately{" "}
-              <strong className="text-black">{result.peopleAbove}</strong>{" "}
-              individuals earn more than you. Additionally, your income stands
-              at{" "}
-              <strong className="text-black">
-                {result.timesNationalAverage}
-              </strong>{" "}
-              times the national average.
-            </p>
+          <div className="flex flex-col md:flex-row gap-5">
+            <div className="md:w-[65%] p-5 rounded-lg shadow-sm border border-gray-300">
+              <p className="text-xl text-gray-400 font-serif font-semibold">
+                You rank among the top{" "}
+                <strong className="text-black">{result.percentile}%</strong> of
+                income earners across India. Out of over a billion people,
+                approximately{" "}
+                <strong className="text-black">{result.peopleAbove}</strong>{" "}
+                individuals earn more than you. Additionally, your income stands
+                at{" "}
+                <strong className="text-black">
+                  {result.timesNationalAverage}
+                </strong>{" "}
+                times the national average.
+              </p>
+            </div>
+            <div className="md:w-[35%] w-full p-3 rounded-lg shadow-sm border border-gray-300">
+              <div className="bg-green-200 h-full">
+                <CurrencyConverter income={income} />
+              </div>
+            </div>
           </div>
           <div className="mb-8">
             <IncomePercentileGraphSvg userPercentile={result.percentile} />
@@ -145,4 +132,4 @@ const IncomePercentileCalculator = ({ income }) => {
   );
 };
 
-export default IncomePercentileCalculator;
+export default PercentileCalculator;

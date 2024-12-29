@@ -4,7 +4,7 @@ import { OrbitControls, Grid } from "@react-three/drei";
 import Human from "../../../../public/Human";
 import * as THREE from "three";
 
-const StacksOfCash = ({ incomeValue }) => {
+const CashStacks = ({ incomeValue }) => {
   const [moneyStacks, setMoneyStacks] = useState([]);
 
   useEffect(() => {
@@ -121,4 +121,4 @@ const StacksOfCash = ({ incomeValue }) => {
   );
 };
 
-export default StacksOfCash;
+export default CashStacks;

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { MdCurrencyRupee } from "react-icons/md";
 import { LiaArrowRightSolid } from "react-icons/lia";
-import IncomePercentileCalculator2 from "./IncomePercentileCalculator2";
-import StacksOfCash2 from "./StacksOfCash2";
+import PercentileCalculator from "./PercentileCalculator";
+import CashStacks from "./CashStacks";
 
 const IncomeCard = () => {
   const [income, setIncome] = useState(""); // For formatted income
@@ -34,7 +34,7 @@ const IncomeCard = () => {
 
   return (
     <div className="w-full">
-      <div className="flex flex-col gap-5 w-[85%] m-auto pt-14">
+      <div className="flex flex-col gap-5 w-[80%] m-auto pt-28">
         <div className="flex flex-col">
           <div className="flex items-center gap-1">
             <MdCurrencyRupee className="text-sm" />
@@ -80,11 +80,11 @@ const IncomeCard = () => {
         </form>
 
         {/* Calculator Results */}
-        <div className="mt-6">
+        <div className="mt-8">
           {submittedIncome && (
             <div>
-              <IncomePercentileCalculator2 income={submittedIncome} />
-              <StacksOfCash2 incomeValue={submittedIncome} />
+              <PercentileCalculator income={submittedIncome} />
+              <CashStacks incomeValue={submittedIncome} />
             </div>
           )}
         </div>
