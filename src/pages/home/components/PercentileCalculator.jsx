@@ -123,8 +123,10 @@ const PercentileCalculator = ({ income }) => {
               </div>
             </div>
           </div>
-          <div className="mb-8">
-            <IncomePercentileGraphSvg userPercentile={result.percentile} />
+          <div className="mb-8 p-5 rounded-lg shadow-sm border border-gray-300">
+            <div className="">
+              <IncomePercentileGraphSvg userPercentile={result.percentile} />
+            </div>
           </div>
         </div>
       )}

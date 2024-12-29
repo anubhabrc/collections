@@ -91,7 +91,7 @@ const CashStacks = ({ incomeValue }) => {
 
   return (
     <div className="w-full">
-      <div className="w-full flex flex-col md:flex-row p-4 md:p-10 gap-4 md:gap-2 min-h-screen">
+      <div className="w-full flex flex-col md:flex-row gap-4 md:gap-2 min-h-screen">
         <div className="w-full md:w-4/5 h-[60vh] md:h-auto bg-white rounded-lg shadow-sm border border-gray-300 p-5 order-1 md:order-2">
           <Canvas>
             <Scene />
